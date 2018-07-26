@@ -1,19 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Dashboard</title>
-	<style type="text/css">
-		div {
-			position: absolute;
-			right: 10px;
-			top: 5px;
-		}
-	</style>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}
+	Dashboard
+{% endblock %}
+
+{% block content %}
 	<h1>Welcome {{ email }}</h1>
 	<div>
 		<button onclick="location.href={% url 'logout' %}">logout</button>
 	</div>
-</body>
-</html>
+{% endblock %}
