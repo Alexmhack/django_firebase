@@ -30,3 +30,6 @@ Now we need a new django project, create django project using
 4. Create views.py file for our sign_in and welcome views
 5. Use the pyrebase module for authenticating users with email and password
 6. add the urls for our views
+
+In views.py we need to import our pyrebase module and then paste the config info we copied from
+firebase configuration and don't forget to keep all the variables in quotes in config data
