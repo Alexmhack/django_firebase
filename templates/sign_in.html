@@ -1,22 +1,26 @@
+{% extends "base.html" %}
+
 {% if msg %}
-<script>
-alert('{{msg}}')
-</script>
+	<script>
+		alert('{{msg}}')
+	</script>
 {% endif %}
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Sign</title>
-</head>
+{% block title %}
+	Login
+{% endblock %}
 
-<body>
-    <form action="/postsign/" method="post">
-        {% csrf_token %} Email :
-        <input type="email" name="email"> Password:
-        <input type="password" name="pass">
+{% block content %}
+    <form action="{% url 'post_sign' %}" method="post">
+        {% csrf_token %} 
+        Email :
+        <input type="email" name="email"> 
+        Password:
+        <input type="password" name="password">
         <input type="submit" value="SignIn">
     </form>
-</body>
-
-</html>
+    <p><a href="{% url 'password_reset' %}">Forgot password ?</a></p>
+    <span>ethan@gmail.com</span>
+    <span>ethandjango</span>
+{% endblock %}
