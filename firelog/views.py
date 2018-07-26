@@ -1,5 +1,7 @@
 import pyrebase
 
+from django.shortcuts import render
+
 config = {
 	apiKey: "AIzaSyCT2VKf1_P7gBfecoi_umWXAAT4uA59OFo",
 	authDomain: "django-project-dc6f8.firebaseapp.com",
@@ -10,3 +12,8 @@ config = {
 }
 
 firebase = pyrebase.initialize_app(config)
+
+auth = firebase.auth()
+
+def sign_in(request):
+	return render(request, 'sign_in.html')
