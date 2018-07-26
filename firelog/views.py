@@ -31,8 +31,8 @@ def post_sign(request):
 		print(e)
 		return render(request, 'sign_in.html', {'msg': message})
 
-	print(user['idtoken'])
-	session_id = user['idtoken']
+	print(user['idToken'])
+	session_id = user['idToken']
 	request.session['uid'] = str(session_id)
 	return render(request, 'welcome.html', {"email": email})
 
