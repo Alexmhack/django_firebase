@@ -13,7 +13,7 @@ config = {
 
 firebase = pyrebase.initialize_app(config)
 
-auth = firebase.auth()
+fireauth = firebase.auth()
 
 def sign_in(request):
 	return render(request, 'sign_in.html')
@@ -24,11 +24,13 @@ def post_sign(request):
 	password = request.POST.get('password')
 
 	try:
-		user = auth.sign_in_with_email_and_password(email, password)
+		user = fireauth.sign_in_with_email_and_password(email, password)
 	except Exception as e:
 		message = "Invalid Credentials"
 		print(e)
 		return render(request, 'sign_in.html', {'msg': message})
 
-	print(user)
+	print(user['idtoken'])
+	session_id = user['idtoken']
+	request.session['uid'] = str(session_id)
 	return render(request, 'welcome.html', {"email": email})
