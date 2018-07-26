@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FireBase Login</title>
+	{% if msg %}
+		<script>alert('{{ msg }}')</script>
+	{% endif %}
+</head>
+<body>
+	<form action="{% url 'post_sign' %}" method="post">
+		{% csrf_token %}
+		<label>Email: </label>
+		<input type='email' name='email'>
+		<label>Password: </label>
+		<input type='password' name='password'>
+		<input type='submit' value='Sign in'>
+	</form>
+</body>
+</html>
