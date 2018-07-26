@@ -21,7 +21,7 @@ def sign_in(request):
 
 def post_sign(request):
 	email = request.POST.get('email')
-	password = request.POST.get('pass')
+	password = request.POST.get('password')
 
 	try:
 		user = auth.sign_in_with_email_and_password(email, password)
