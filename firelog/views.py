@@ -17,3 +17,18 @@ auth = firebase.auth()
 
 def sign_in(request):
 	return render(request, 'sign_in.html')
+
+
+def post_sign(request):
+	email = request.POST.get('email')
+	password = request.POST.get('pass')
+
+	try:
+		user = auth.sign_in_with_email_and_password(email, password)
+	except Exception as e:
+		message = "Invalid Credentials"
+		print(e)
+		return render(request, 'sign_in.html', {'msg': message})
+
+	print(user)
+	return render(request, 'welcome.html', {"email": email})
