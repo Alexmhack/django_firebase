@@ -23,4 +23,5 @@ urlpatterns = [
     path('', views.sign_in, name='sign_in'),
     path('dashboard/', views.post_sign, name='post_sign'),
     path('logout/', views.logout, name='logout'),
+    path('password/reset/', views.password_reset_view, name='password_reset'),
 ]
