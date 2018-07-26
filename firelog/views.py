@@ -1,6 +1,6 @@
 import pyrebase
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import auth
 
 firebase_api = open('../firebase_api.txt')
@@ -60,20 +60,20 @@ def password_reset_sent(request):
 
 
 def signup(request):
-	return render(request, 'sign_up.html')
-
-
-def post_signup(request):
-	try:
-		name = request.POST.get('name')
-		email = request.POST.get('email')
-		password = request.POST.get('password')
-		user = fireauth.create_user_with_email_and_password(email, password)
-		uid = user['localId']
-		data = {'name': name, 'status': 1}
-		database.child("users").child(uid).child("details").set(data)
-	except Exception as e:
-		message = "Unable to create account. Please Try again"
+	if request.method == 'POST':
+		try:
+			name = request.POST.get('name')
+			email = request.POST.get('email')
+			password = request.POST.get('password')
+			user = fireauth.create_user_with_email_and_password(email, password)
+			uid = user['localId']
+			data = {'name': name, 'status': 1}
+			database.child("users").child(uid).child("details").set(data)
+			return redirect('sign_in')
+		except Exception as e:
+			message = "Unable to create account. Please Try again"
+			print(e)
+			# return render(request, 'sign_up.html', {'msg': message})
+			return redirect('sign_in')
+	else:
 		return render(request, 'sign_up.html')
-
-	return render(request, 'sign_in.html')
