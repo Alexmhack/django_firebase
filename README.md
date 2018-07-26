@@ -23,3 +23,9 @@ Now we need a new django project, create django project using
 
 > cd firelog
 > python manage.py runserver
+
+1. Now we need to makemigrations and migrate
+2. Create a templates folder for our sign_in and welcome pages
+3. Set the templates folder path in settings.py
+4. Create views.py file for our sign_in and welcome views
+5. Use the pyrebase module for authenticating users with email and password
