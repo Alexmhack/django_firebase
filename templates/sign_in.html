@@ -21,6 +21,5 @@
         <input type="submit" value="SignIn">
     </form>
     <p><a href="{% url 'password_reset' %}">Forgot password ?</a></p>
-    <span>ethan@gmail.com</span>
-    <span>ethandjango</span>
+    <button type='button' onclick="location.href={% url 'signup' %}">SignUp</button>
 {% endblock %}
