@@ -29,3 +29,4 @@ Now we need a new django project, create django project using
 3. Set the templates folder path in settings.py
 4. Create views.py file for our sign_in and welcome views
 5. Use the pyrebase module for authenticating users with email and password
+6. add the urls for our views
