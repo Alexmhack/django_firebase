@@ -1,6 +1,7 @@
 import pyrebase
 
 from django.shortcuts import render
+from django.contrib import auth
 
 config = {
 	'apiKey': "AIzaSyCT2VKf1_P7gBfecoi_umWXAAT4uA59OFo",
@@ -34,3 +35,8 @@ def post_sign(request):
 	session_id = user['idtoken']
 	request.session['uid'] = str(session_id)
 	return render(request, 'welcome.html', {"email": email})
+
+
+def logout(request):
+	auth.logout(request)
+	return render(request, 'sign_in.html')
